@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="금융감독원 금융교육 전문강사 인증시험 대비 문제집 — 표준교재 16개 챕터 289문항 + 실전 모의고사 2회 80문항">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="금융강사 문제집">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+<title>금융교육 전문강사 문제집</title>
+<style>
+:root{
+  --bg:#fff; --card:#fff; --ink:#16181a; --sub:#71777d; --line:#e6e8ec;
+  --soft:#f4f6f8; --accent:#1f5f8b; --accent-soft:#eaf2f8;
+  --ok:#12805a; --ok-bg:#e6f6ef; --ok-line:#8fd6ba;
+  --no:#c8372a; --no-bg:#fdeeec; --no-line:#f2b3aa;
+  --star:#b7860b; --star-bg:#fdf4e0; --star-line:#e8cd8d;
+  --memo-bg:#fbf8ee; --memo-line:#e7e0cb; --memo-ink:#8a7434;
+  --safe-b:env(safe-area-inset-bottom,0px); --safe-t:env(safe-area-inset-top,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#111315; --card:#191c1f; --ink:#e9ebed; --sub:#8b9298; --line:#2a2f34;
+    --soft:#212529; --accent:#7fb6da; --accent-soft:#1b2b36;
+    --ok:#4ec99a; --ok-bg:#12332a; --ok-line:#2f6b55;
+    --no:#f08375; --no-bg:#3a1f1c; --no-line:#7a3a33;
+    --star:#e8bd5c; --star-bg:#332a14; --star-line:#5f4d22;
+    --memo-bg:#232019; --memo-line:#3d3728; --memo-ink:#cdb87c;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-text-size-adjust:100%;
+  overscroll-behavior-y:contain;display:flex;flex-direction:column}
+
+/* ───── 상단바 ───── */
+.top{position:sticky;top:0;z-index:10;background:var(--bg);
+  padding:calc(var(--safe-t) + 10px) 14px 8px;border-bottom:1px solid var(--line);flex:none}
+.toprow{display:flex;gap:6px;align-items:center}
+.tbtn{flex:none;font-family:inherit;font-size:13px;font-weight:600;padding:8px 12px;min-height:36px;
+  border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  cursor:pointer;touch-action:manipulation;white-space:nowrap}
+.tbtn:active{background:var(--soft)}
+.tbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tbtn.home{padding:8px 11px}
+.spacer{flex:1}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.fchip{flex:none;font-family:inherit;font-size:12.5px;font-weight:650;padding:6px 11px;min-height:32px;
+  border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--sub);
+  cursor:pointer;touch-action:manipulation;white-space:nowrap}
+.fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.fchip:disabled{opacity:.35;cursor:default}
+.prog{margin-top:9px;display:flex;align-items:center;gap:9px}
+.track{flex:1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);border-radius:2px;transition:width .28s ease}
+.pos,.timer{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums;flex:none}
+.chname{font-size:12.5px;color:var(--sub);margin-top:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 16px 8px}
+
+/* ───── 홈 ───── */
+.home{max-width:640px;margin:0 auto;padding-bottom:40px}
+.home header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:4px}
+.eyebrow{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:0 0 6px}
+.home h1{font-size:25px;margin:0 0 7px;letter-spacing:-.02em;line-height:1.3}
+.hmeta{margin:0;font-size:13.5px;color:var(--sub)}
+.hmeta b{color:var(--ink)}
+.sect{margin:28px 0 10px;font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.03em}
+.sect .note{font-weight:400;color:var(--sub);letter-spacing:0}
+.home .list{display:flex;flex-direction:column;gap:8px}
+.home a.item{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);
+  border-radius:12px;background:var(--card);text-decoration:none;color:inherit;min-height:62px}
+.home a.item:active{background:var(--soft)}
+.home .badge{flex:none;width:30px;height:30px;border-radius:9px;background:var(--soft);color:var(--sub);
+  font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.home a.mock .badge{background:var(--accent);color:#fff}
+.home a.rev{border-color:var(--star-line);background:var(--star-bg)}
+.home a.rev .badge{background:var(--star);color:#fff;font-size:15px}
+.home .txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.home .txt b{font-size:15.5px;font-weight:650;letter-spacing:-.01em}
+.home .sub{font-size:12.5px;color:var(--sub);margin-top:2px}
+.home .cnt{flex:none;font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums;text-align:right}
+.home .cnt .done{display:block;color:var(--accent);font-weight:700;font-size:11.5px}
+.home .cnt .tags{display:block;font-size:11.5px;font-weight:700;margin-top:1px}
+.home .cnt .tw{color:var(--no)}
+.home .cnt .tm{color:var(--star)}
+.home footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+.home footer button{font-family:inherit;font-size:12px;color:var(--sub);background:none;border:0;
+  padding:0;margin-top:6px;text-decoration:underline;cursor:pointer}
+
+/* ───── 문제 ───── */
+.card{max-width:640px;margin:0 auto}
+.tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.03em;margin:0 0 8px}
+.tag .star{color:var(--star)}
+.stem{margin:0;font-size:18px;font-weight:650;line-height:1.55;letter-spacing:-.015em}
+.stem u{text-underline-offset:3px;text-decoration-thickness:2px}
+.box{margin:14px 0 0;padding:13px 15px;background:var(--soft);border-radius:10px;font-size:15px;line-height:1.6}
+ul.opts{list-style:none;margin:18px 0 0;padding:0}
+ul.opts li{position:relative;margin:9px 0;padding:13px 42px;min-height:52px;
+  border:1.5px solid var(--line);border-radius:12px;background:var(--card);
+  font-size:16px;line-height:1.5;cursor:pointer;touch-action:manipulation;transition:border-color .12s,background .12s}
+ul.opts li:active{background:var(--soft)}
+ul.opts li .n{position:absolute;left:15px;top:13px;color:var(--sub);font-weight:700;font-size:15px}
+ul.opts li .mk{position:absolute;right:14px;top:12px;font-size:17px;font-weight:800;opacity:0}
+ul.opts li.ok{background:var(--ok-bg);border-color:var(--ok-line)}
+ul.opts li.ok .n,ul.opts li.ok .mk{color:var(--ok);opacity:1}
+ul.opts li.no{background:var(--no-bg);border-color:var(--no-line)}
+ul.opts li.no .n,ul.opts li.no .mk{color:var(--no);opacity:1}
+ul.opts li.sel{background:var(--accent-soft);border-color:var(--accent)}
+ul.opts li.sel .n{color:var(--accent);font-weight:800}
+.card.done ul.opts li{cursor:default}
+.exp{margin:18px 0 0;padding:14px 15px;border-radius:10px;background:var(--soft);
+  font-size:14.5px;line-height:1.65;color:var(--sub);display:none;animation:up .22s ease}
+.exp b{color:var(--ink);font-weight:700}
+.exp .verdict{display:block;font-size:13px;font-weight:800;letter-spacing:.03em;margin-bottom:5px}
+.card.done .exp{display:block}
+@keyframes up{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ───── 메모 ───── */
+.note{margin:16px 0 0;padding:12px 14px;border-radius:10px;background:var(--memo-bg);
+  border:1px solid var(--memo-line);font-size:14.8px;line-height:1.62;white-space:pre-wrap;
+  word-break:break-word;cursor:pointer;animation:up .22s ease}
+.note .lb{display:block;font-size:11.5px;font-weight:800;letter-spacing:.05em;color:var(--memo-ink);margin-bottom:4px}
+.memoed{margin:16px 0 0;animation:up .22s ease}
+.memoed textarea{width:100%;min-height:120px;font-family:inherit;font-size:15.5px;line-height:1.6;
+  padding:12px 13px;border-radius:10px;border:1.5px solid var(--accent);background:var(--card);
+  color:var(--ink);resize:vertical;outline:none}
+.memoed .row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.memoed .hint{flex:1;font-size:12px;color:var(--sub)}
+.mini{flex:none;font-family:inherit;font-size:12.5px;font-weight:650;padding:7px 13px;min-height:34px;
+  border-radius:17px;border:1px solid var(--line);background:var(--card);color:var(--sub);
+  cursor:pointer;touch-action:manipulation}
+.mini.go{border-color:var(--accent);background:var(--accent);color:#fff}
+
+/* ───── 결과 ───── */
+.result{max-width:640px;margin:0 auto;text-align:center;padding:30px 4px 40px}
+.rate{font-size:54px;font-weight:800;letter-spacing:-.04em;line-height:1;margin:0}
+.rate span{font-size:25px;font-weight:700;color:var(--sub)}
+.desc{margin:14px 0 0;font-size:15.5px;color:var(--sub)}
+.desc b{color:var(--ink)}
+.grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 0}
+.chip{position:relative;width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:13.5px;font-weight:700;border:1px solid var(--line);background:var(--card);color:var(--sub);
+  cursor:pointer;touch-action:manipulation}
+.chip.c{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok)}
+.chip.w{background:var(--no-bg);border-color:var(--no-line);color:var(--no)}
+.chip .fl{position:absolute;top:-4px;right:-3px;font-size:11px;color:var(--star)}
+.secttl{margin:26px 0 0;font-size:14px;font-weight:800;text-align:left}
+.secttl span{font-weight:400;color:var(--sub);font-size:12.5px}
+table.key{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0 0}
+table.key th,table.key td{padding:8px 4px;border-bottom:1px solid var(--line);text-align:center}
+table.key th{color:var(--sub);font-size:12.5px;font-weight:700}
+table.key td.o{color:var(--ok);font-weight:800}
+table.key td.x{color:var(--no);font-weight:800}
+table.key tbody tr{cursor:pointer}
+.empty{max-width:640px;margin:0 auto;text-align:center;padding:60px 10px;color:var(--sub);font-size:15px;line-height:1.7}
+
+/* ───── 하단 네비 ───── */
+.nav{flex:none;position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);
+  padding:10px 16px calc(var(--safe-b) + 10px);display:flex;gap:8px;max-width:672px;margin:0 auto;width:100%}
+.nbtn{flex:1;font-family:inherit;font-size:15.5px;font-weight:650;padding:14px 6px;min-height:50px;
+  border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  cursor:pointer;touch-action:manipulation}
+.nbtn:active{background:var(--soft)}
+.nbtn:disabled{opacity:.32;cursor:default}
+.nbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.nbtn.icon{flex:none;width:54px;padding:14px 0;font-size:19px;line-height:1;color:var(--sub)}
+.nbtn.icon.on{background:var(--star-bg);border-color:var(--star-line);color:var(--star)}
+.nbtn.icon.has{background:var(--memo-bg);border-color:var(--memo-line);color:var(--memo-ink)}
+@media (prefers-color-scheme:dark){.nbtn.primary{color:#0d1417}}
+[hidden]{display:none!important}
+@media (max-width:359px){
+  .tbtn{font-size:12px;padding:8px 9px}
+  .nbtn{font-size:14.5px}
+  .nbtn.icon{width:48px;font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="top" id="top"></div>
+<main id="main"></main>
+<div class="nav" id="nav" hidden></div>
+
+<script>
+/* ═══════════════ 데이터 ═══════════════ */
+__DATA__
+
+/* ═══════════════ 엔진 ═══════════════ */
+const NUM = ["①","②","③","④","⑤"];
+const $ = id => document.getElementById(id);
+const top_ = $('top'), main = $('main'), nav = $('nav');
+
+const ALL = {};
+DATA.chapters.forEach(c => ALL[c.id] = c);
+DATA.mocks.forEach(m => ALL[m.id] = m);
+const REAL = Object.keys(ALL);           // 실제 문제집 id (모아보기 제외)
+
+/* ───── 저장소 : 마킹 · 메모 · 풀이기록 ─────
+   localStorage 를 쓰되, 차단된 환경(사생활 보호 모드 · 미리보기)에서는
+   자동으로 메모리 전용으로 내려앉는다. 저장 실패가 앱을 멈추지 않는다. */
+const KEY = 'fss_quiz_v1';
+const DB = { mark:{}, memo:{}, pick:{} };
+let STORE_OK = true;
+(function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ const o = JSON.parse(raw);
+      DB.mark = o.mark || {}; DB.memo = o.memo || {}; DB.pick = o.pick || {}; }
+  }catch(e){ STORE_OK = false; }
+})();
+let saveT = null;
+function save(){
+  clearTimeout(saveT);
+  saveT = setTimeout(()=>{
+    try{ localStorage.setItem(KEY, JSON.stringify(DB)); }
+    catch(e){ STORE_OK = false; }
+  }, 200);
+}
+window.addEventListener('pagehide', ()=>{ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){} });
+
+/* ───── 풀이 상태 ───── */
+const S = {};
+function st(id){
+  if(!S[id]){
+    const n = ALL[id].qs.length;
+    const saved = DB.pick[id];
+    S[id] = {pick: (Array.isArray(saved) && saved.length===n) ? saved.slice() : new Array(n).fill(0),
+             idx:0, filter:'all', fOpen:false, memoOpen:false, graded:false,
+             showResult:false, t0:0, tEnd:0, order:ALL[id].qs.map((_,i)=>i)};
+  }
+  return S[id];
+}
+REAL.forEach(id => st(id));              // 저장된 풀이기록 복원
+
+/* 문항 고유키 — 모아보기에서는 원본 챕터의 키를 그대로 쓴다 */
+function qkey(id,i){
+  const D = ALL[id];
+  if(D.refs){ const r = D.refs[i]; return r.cid+'#'+r.i; }
+  return id+'#'+i;
+}
+const isMark = (id,i) => !!DB.mark[qkey(id,i)];
+const isMemo = (id,i) => !!DB.memo[qkey(id,i)];
+function isWrong(id,i){ const s = st(id); return !!s.pick[i] && s.pick[i] !== ALL[id].qs[i].a; }
+
+function setMark(id,i,v){
+  const k = qkey(id,i);
+  if(v) DB.mark[k] = 1; else delete DB.mark[k];
+  save();
+}
+function setMemo(id,i,txt){
+  const k = qkey(id,i);
+  if(txt && txt.trim()) DB.memo[k] = txt.trim(); else delete DB.memo[k];
+  save();
+}
+function setPick(id,i,k){
+  const s = st(id); s.pick[i] = k;
+  const D = ALL[id];
+  if(D.refs){ const r = D.refs[i]; const ss = st(r.cid); ss.pick[r.i] = k; DB.pick[r.cid] = ss.pick.slice(); }
+  else DB.pick[id] = s.pick.slice();
+  save();
+}
+
+/* ───── 모아보기 덱 (전 챕터 오답 · 마킹 · 메모) ───── */
+function buildReview(){
+  const refs = [], qs = [], from = [];
+  REAL.forEach(cid=>{
+    ALL[cid].qs.forEach((q,i)=>{
+      const k = cid+'#'+i;
+      if(DB.mark[k] || DB.memo[k] || isWrong(cid,i)){
+        refs.push({cid,i}); qs.push(q); from.push(ALL[cid].title);
+      }
+    });
+  });
+  const prev = S['review'];
+  ALL['review'] = {id:'review', title:'오답 · 마킹 모아보기', src:'전 챕터', qs, refs, from, review:true};
+  delete S['review'];
+  const s = st('review');
+  refs.forEach((r,i)=>{ s.pick[i] = st(r.cid).pick[r.i]; });
+  if(prev) s.filter = prev.filter;
+  return refs.length;
+}
+function reviewCount(){
+  let n = 0;
+  REAL.forEach(cid => ALL[cid].qs.forEach((q,i)=>{
+    const k = cid+'#'+i;
+    if(DB.mark[k] || DB.memo[k] || isWrong(cid,i)) n++;
+  }));
+  return n;
+}
+
+/* ───── 라우터 ───── */
+function route(){
+  const h = location.hash.replace(/^#\/?/,'');
+  if(!h){ renderHome(); return; }
+  const id = decodeURIComponent(h);
+  if(id === 'review'){
+    if(buildReview() === 0){ renderHome(); return; }
+    renderQuiz('review'); return;
+  }
+  if(ALL[id]) renderQuiz(id);
+  else { location.hash = ''; }
+}
+window.addEventListener('hashchange', route);
+
+/* ───── 홈 ───── */
+function statLabel(id){
+  const s = S[id], D = ALL[id];
+  const solved = s.pick.filter(v=>v>0).length;
+  const ok = D.qs.filter((q,i)=>s.pick[i]===q.a).length;
+  let mk=0, mo=0;
+  D.qs.forEach((q,i)=>{ const k=id+'#'+i; if(DB.mark[k])mk++; if(DB.memo[k])mo++; });
+  let out = '';
+  if(solved) out += `<span class="done">${solved}/${D.qs.length} · ${ok}정답</span>`;
+  const t = [];
+  if(solved-ok) t.push(`<span class="tw">오답 ${solved-ok}</span>`);
+  if(mk) t.push(`<span class="tm">★${mk}</span>`);
+  if(mo) t.push(`<span class="tm">✎${mo}</span>`);
+  if(t.length) out += `<span class="tags">${t.join(' ')}</span>`;
+  return out;
+}
+function renderHome(){
+  document.title = '금융교육 전문강사 문제집';
+  top_.hidden = true; nav.hidden = true;
+  const p1 = DATA.chapters.filter(c=>c.part===1), p2 = DATA.chapters.filter(c=>c.part===2);
+  const tot = DATA.chapters.reduce((a,c)=>a+c.qs.length,0);
+  const mtot = DATA.mocks.reduce((a,m)=>a+m.qs.length,0);
+  const rc = reviewCount();
+  const card = c => `<a class="item" href="#/${c.id}">
+      <span class="badge">${c.no}</span>
+      <span class="txt"><b>${c.title}</b><span class="sub">${c.src}</span></span>
+      <span class="cnt">${c.qs.length}문항${statLabel(c.id)}</span></a>`;
+  main.innerHTML = `<div class="home">
+    <header>
+      <p class="eyebrow">금융감독원 금융교육 전문강사 인증시험</p>
+      <h1>표준교재 문제집</h1>
+      <p class="hmeta">16개 챕터 <b>${tot}문항</b> · 실전 모의고사 2회 <b>${mtot}문항</b></p>
+    </header>
+    ${rc ? `<p class="sect">복습</p>
+    <div class="list"><a class="item rev" href="#/review">
+      <span class="badge">★</span>
+      <span class="txt"><b>오답 · 마킹 모아보기</b><span class="sub">전 챕터 · 모의고사에서 모음</span></span>
+      <span class="cnt">${rc}문항</span></a></div>` : ''}
+    <p class="sect">PART 1 · 금융의 이해</p>
+    <div class="list">${p1.map(card).join('')}</div>
+    <p class="sect">PART 2 · 금융교육의 이해</p>
+    <div class="list">${p2.map(card).join('')}</div>
+    <p class="sect">실전 모의고사 <span class="note">— 해설 없이 정답표만</span></p>
+    <div class="list">${DATA.mocks.map((m,i)=>`<a class="item mock" href="#/${m.id}">
+        <span class="badge">${i+1}</span>
+        <span class="txt"><b>${m.title}</b><span class="sub">전 범위 · 채점 후 정답표</span></span>
+        <span class="cnt">${m.qs.length}문항${statLabel(m.id)}</span></a>`).join('')}</div>
+    <footer>출처: 금융감독원 「금융교육 전문강사 표준교재」 개정판(2025.12)<br>
+      ${STORE_OK ? '풀이 기록 · 마킹 · 메모는 이 브라우저에 저장됩니다.'
+                 : '이 브라우저는 저장이 막혀 있어 기록이 새로고침 시 초기화됩니다.'}
+      <br><button onclick="wipe()">기록 전체 초기화</button></footer>
+  </div>`;
+  main.scrollTop = 0;
+}
+function wipe(){
+  if(!confirm('풀이 기록 · 마킹 · 메모를 모두 지울까요?')) return;
+  DB.mark={}; DB.memo={}; DB.pick={};
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  REAL.forEach(id=>delete S[id]); delete S['review'];
+  REAL.forEach(id=>st(id));
+  renderHome();
+}
+
+/* ───── 퀴즈 ───── */
+const FILTERS = [
+  ['all','전체'], ['wrong','오답'], ['mark','마킹'], ['both','오답+마킹'], ['memo','메모']
+];
+let timerId = null;
+function renderQuiz(id){
+  const D = ALL[id], s = st(id), isMock = !!D.mock, isRev = !!D.review;
+  document.title = D.title + ' · 금융교육 전문강사 문제집';
+  top_.hidden = false; nav.hidden = false;
+
+  if(isMock && !s.t0) s.t0 = Date.now();
+  clearInterval(timerId);
+  if(isMock && !s.graded) timerId = setInterval(()=>{
+    const t = $('timer'); if(t) t.textContent = fmt(Date.now()-s.t0); else clearInterval(timerId);
+  }, 1000);
+
+  top_.innerHTML = `<div class="toprow">
+      <button class="tbtn home" onclick="go('')">← 목차</button>
+      <button class="tbtn" id="bFilter">모아보기</button>
+      <span class="spacer"></span>
+      ${isMock ? `<button class="tbtn" id="bGrade">채점하기</button>` : ''}
+      <button class="tbtn" id="bReset">${isRev ? '새로 모으기' : '다시 풀기'}</button>
+    </div>
+    <div class="filters" id="filters" hidden></div>
+    <div class="prog">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <div class="pos" id="pos"></div>
+      ${isMock ? '<div class="timer" id="timer">00:00</div>' : ''}
+    </div>
+    <div class="chname">${D.title}</div>`;
+
+  nav.innerHTML = `<button class="nbtn" id="bPrev">← 이전</button>
+                   <button class="nbtn icon" id="bMark" title="마킹">☆</button>
+                   <button class="nbtn icon" id="bMemo" title="메모">✎</button>
+                   <button class="nbtn primary" id="bNext">다음 →</button>`;
+
+  $('bFilter').onclick = ()=>{ s.fOpen = !s.fOpen; paintFilters(id); };
+  if(isMock) $('bGrade').onclick = ()=>grade(id);
+  $('bReset').onclick = ()=>{
+    if(isRev){ buildReview(); s.idx=0; route(); return; }
+    if(s.pick.some(v=>v>0) && !confirm('이 챕터의 풀이 기록을 지우고 처음부터 다시 풀까요?\n(마킹·메모는 남습니다)')) return;
+    delete DB.pick[id]; delete S[id]; save();
+    const n = st(id); if(isMock) n.t0 = Date.now();
+    buildOrder(id); paint(id);
+  };
+  $('bPrev').onclick = ()=>prev(id);
+  $('bNext').onclick = ()=>next(id);
+  $('bMark').onclick = ()=>{
+    const i = s.order[s.idx]; if(i === undefined) return;
+    setMark(id, i, !isMark(id,i)); paint(id);
+  };
+  $('bMemo').onclick = ()=>{ s.memoOpen = !s.memoOpen; paint(id); if(s.memoOpen){ const t=$('memoTa'); if(t){ t.focus(); t.setSelectionRange(t.value.length,t.value.length); } } };
+
+  buildOrder(id);
+  paint(id);
+}
+function go(h){ location.hash = h ? '#/'+h : '#'; if(!h) history.replaceState(null,'',location.pathname+location.search); route(); }
+function fmt(ms){ const t=Math.floor(ms/1000);
+  return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0'); }
+
+function match(id,i,f){
+  if(f==='all') return true;
+  if(f==='wrong') return isWrong(id,i);
+  if(f==='mark') return isMark(id,i);
+  if(f==='memo') return isMemo(id,i);
+  return isWrong(id,i) || isMark(id,i);          // both
+}
+function fcount(id,f){
+  const D = ALL[id]; let n=0;
+  for(let i=0;i<D.qs.length;i++) if(match(id,i,f)) n++;
+  return n;
+}
+function buildOrder(id){
+  const D = ALL[id], s = st(id);
+  s.order = D.qs.map((_,i)=>i).filter(i=>match(id,i,s.filter));
+  if(!s.order.length && s.filter!=='all'){ /* 비어도 안내 화면을 보여준다 */ }
+}
+function paintFilters(id){
+  const s = st(id), box = $('filters'); if(!box) return;
+  box.hidden = !s.fOpen;
+  if(!s.fOpen) return;
+  box.innerHTML = FILTERS.map(([f,label])=>{
+    const n = fcount(id,f);
+    return `<button class="fchip${s.filter===f?' on':''}" data-f="${f}"${n?'':' disabled'}>${label} ${n}</button>`;
+  }).join('');
+  box.querySelectorAll('.fchip').forEach(b=>b.addEventListener('click',()=>{
+    s.filter = b.dataset.f; s.fOpen = false; s.showResult = false; s.idx = 0;
+    buildOrder(id); paint(id);
+  },{passive:true}));
+}
+
+function paint(id){
+  const D = ALL[id], s = st(id), isMock = !!D.mock, isRev = !!D.review, n = s.order.length;
+  paintFilters(id);
+
+  if(n === 0){
+    const lbl = (FILTERS.find(f=>f[0]===s.filter)||['','전체'])[1];
+    main.innerHTML = `<div class="empty">${lbl}에 해당하는 문항이 없습니다.<br>위 <b>모아보기</b>에서 다른 범위를 골라 보세요.</div>`;
+    $('pos').textContent='0 / 0'; $('fill').style.width='0';
+    $('bPrev').disabled=true; $('bNext').disabled=true;
+    $('bMark').disabled=true; $('bMemo').disabled=true;
+    bar(id); return;
+  }
+  $('bMark').disabled=false; $('bMemo').disabled=false;
+  if(s.idx >= n) s.idx = n-1;
+  if(s.idx < 0) s.idx = 0;
+  if(s.showResult){ isMock ? mockResult(id) : chapResult(id); return; }
+
+  const i = s.order[s.idx], Q = D.qs[i], sel = s.pick[i];
+  const graded = isMock ? s.graded : sel > 0;
+  const memo = DB.memo[qkey(id,i)] || '';
+  const marked = isMark(id,i);
+
+  let html = '<div class="card'+(graded?' done':'')+'">';
+  html += '<p class="tag">'+(s.idx+1)+'. '+(isRev ? D.from[i]+' · ' : '')+Q.t
+        + (marked ? ' <span class="star">★</span>' : '')+'</p>';
+  html += '<p class="stem">'+Q.q+'</p>';
+  if(Q.box) html += '<div class="box">'+Q.box+'</div>';
+  html += '<ul class="opts">';
+  Q.o.forEach((txt,k)=>{
+    const no = k+1; let cls='', mk='';
+    if(graded){
+      if(no===Q.a){ cls=' class="ok"'; mk='✓'; }
+      else if(no===sel){ cls=' class="no"'; mk='✗'; }
+    } else if(isMock && no===sel){ cls=' class="sel"'; }
+    html += '<li'+cls+' data-k="'+no+'"><span class="n">'+NUM[k]+'</span>'+txt+'<span class="mk">'+mk+'</span></li>';
+  });
+  html += '</ul>';
+  if(!isMock){
+    const right = graded && sel===Q.a;
+    html += '<div class="exp"><span class="verdict" style="color:'+(right?'var(--ok)':'var(--no)')+'">'
+          + (right ? '정답입니다' : '오답 — 정답은 '+NUM[Q.a-1]) + '</span>'
+          + (Q.e || '<span style="opacity:.7">모의고사 문항이라 해설이 없습니다.</span>') + '</div>';
+  }
+  if(s.memoOpen){
+    html += `<div class="memoed">
+      <textarea id="memoTa" placeholder="이 문제에서 헷갈린 점, 외울 것…">${memo.replace(/</g,'&lt;')}</textarea>
+      <div class="row"><span class="hint" id="memoHint">입력하면 자동 저장됩니다</span>
+        <button class="mini" id="memoDel">지우기</button>
+        <button class="mini go" id="memoOk">닫기</button></div></div>`;
+  } else if(memo){
+    html += `<div class="note" id="noteView"><span class="lb">메모</span>${memo.replace(/</g,'&lt;')}</div>`;
+  }
+  html += '</div>';
+  main.innerHTML = html; main.scrollTop = 0;
+
+  const lock = isMock ? s.graded : graded;
+  if(!lock){
+    main.querySelectorAll('ul.opts li').forEach(li=>{
+      li.addEventListener('click', ()=>{
+        const k = parseInt(li.dataset.k,10);
+        setPick(id, i, (isMock && s.pick[i]===k) ? 0 : k);
+        paint(id);
+      }, {passive:true});
+    });
+  }
+  const nv = $('noteView');
+  if(nv) nv.addEventListener('click', ()=>{ s.memoOpen=true; paint(id);
+    const t=$('memoTa'); if(t){ t.focus(); t.setSelectionRange(t.value.length,t.value.length); } }, {passive:true});
+  const ta = $('memoTa');
+  if(ta){
+    ta.addEventListener('input', ()=>{ setMemo(id,i,ta.value);
+      const h=$('memoHint'); if(h){ h.textContent='저장됨'; clearTimeout(ta._t);
+        ta._t=setTimeout(()=>{ if($('memoHint')) $('memoHint').textContent='입력하면 자동 저장됩니다'; },1200); } });
+    $('memoDel').onclick = ()=>{ ta.value=''; setMemo(id,i,''); s.memoOpen=false; paint(id); };
+    $('memoOk').onclick  = ()=>{ setMemo(id,i,ta.value); s.memoOpen=false; paint(id); };
+  }
+
+  $('pos').textContent = (s.idx+1)+' / '+n;
+  $('bPrev').disabled = (s.idx===0);
+  $('bMark').textContent = marked ? '★' : '☆';
+  $('bMark').classList.toggle('on', marked);
+  $('bMemo').classList.toggle('has', !!memo);
+  $('bNext').textContent = (s.idx===n-1)
+    ? (isMock && !isRev ? (s.graded?'정답표':'채점하기') : (s.filter!=='all' || isRev ? '완료' : '결과 보기'))
+    : '다음 →';
+  $('bNext').disabled = false;
+  bar(id);
+}
+
+function bar(id){
+  const D = ALL[id], s = st(id), isMock = !!D.mock;
+  const solved = s.pick.filter(v=>v>0).length;
+  $('fill').style.width = (solved/D.qs.length*100)+'%';
+  const g = $('bGrade'); if(g) g.textContent = s.graded ? '정답표' : '채점 ('+solved+')';
+  const b = $('bFilter');
+  if(b){
+    const lbl = (FILTERS.find(f=>f[0]===s.filter)||['','전체'])[1];
+    b.textContent = s.filter==='all' ? '모아보기' : lbl+' '+s.order.length;
+    b.classList.toggle('on', s.filter!=='all');
+  }
+}
+
+function chapResult(id){
+  const D = ALL[id], s = st(id);
+  const solved = s.pick.filter(v=>v>0).length;
+  const ok = D.qs.filter((q,i)=>s.pick[i]===q.a).length;
+  const no = solved - ok;
+  const rate = Math.round(ok/D.qs.length*100);
+  main.innerHTML = `<div class="result">
+    <p class="rate">${rate}<span>%</span></p>
+    <p class="desc"><b>${D.qs.length}문항</b> 중 정답 <b>${ok}</b> · 오답 <b>${no}</b>${solved<D.qs.length?' · 미응답 <b>'+(D.qs.length-solved)+'</b>':''}</p>
+    <div class="grid">${D.qs.map((q,i)=>{
+      const c = s.pick[i]===0 ? '' : (s.pick[i]===q.a?' c':' w');
+      return `<div class="chip${c}" data-i="${i}">${i+1}${isMark(id,i)?'<span class="fl">★</span>':''}</div>`;}).join('')}</div>
+  </div>`;
+  main.scrollTop = 0;
+  main.querySelectorAll('.chip').forEach(el=>el.addEventListener('click',()=>{
+    const t = parseInt(el.dataset.i,10);
+    if(s.order.indexOf(t) < 0){ s.filter='all'; buildOrder(id); }
+    s.showResult=false; s.idx=s.order.indexOf(t); paint(id);
+  },{passive:true}));
+  $('pos').textContent='결과'; $('bPrev').disabled=false;
+  $('bMark').disabled=true; $('bMemo').disabled=true;
+  $('bNext').textContent = no ? '오답 모아보기' : '처음으로';
+  $('bNext').disabled=false; bar(id);
+}
+
+function mockResult(id){
+  const D = ALL[id], s = st(id);
+  const ok = D.qs.filter((q,i)=>s.pick[i]===q.a).length;
+  const solved = s.pick.filter(v=>v>0).length;
+  const rate = Math.round(ok/D.qs.length*100);
+  main.innerHTML = `<div class="result">
+    <p class="rate">${ok}<span> / ${D.qs.length}</span></p>
+    <p class="desc">정답률 <b>${rate}%</b> · 미응답 <b>${D.qs.length-solved}</b> · 소요시간 <b>${fmt((s.tEnd||Date.now())-s.t0)}</b></p>
+    <p class="secttl">정답표 <span>— 번호를 누르면 해당 문항으로 이동</span></p>
+    <table class="key"><thead><tr><th>번호</th><th>영역</th><th>정답</th><th>내 답</th><th>결과</th></tr></thead><tbody>
+    ${D.qs.map((q,i)=>{
+      const my = s.pick[i] ? NUM[s.pick[i]-1] : '–';
+      const good = s.pick[i]===q.a;
+      return `<tr data-i="${i}"><td>${i+1}${isMark(id,i)?' <span style="color:var(--star)">★</span>':''}</td>
+        <td style="font-size:12.5px;color:var(--sub)">${q.t}</td>
+        <td><b>${NUM[q.a-1]}</b></td><td>${my}</td><td class="${good?'o':'x'}">${good?'O':'X'}</td></tr>`;
+    }).join('')}</tbody></table></div>`;
+  main.scrollTop = 0;
+  main.querySelectorAll('tbody tr').forEach(el=>el.addEventListener('click',()=>{
+    const t = parseInt(el.dataset.i,10);
+    if(s.order.indexOf(t) < 0){ s.filter='all'; buildOrder(id); }
+    s.showResult=false; s.idx=s.order.indexOf(t); paint(id);
+  },{passive:true}));
+  $('pos').textContent='결과'; $('bPrev').disabled=false;
+  $('bMark').disabled=true; $('bMemo').disabled=true;
+  $('bNext').textContent='1번으로'; $('bNext').disabled=false; bar(id);
+}
+
+function grade(id){
+  const s = st(id);
+  const un = s.pick.filter(v=>v===0).length;
+  if(!s.graded && un>0 && !confirm('아직 '+un+'문항이 미응답입니다. 채점할까요?')) return;
+  if(!s.graded){ s.graded=true; s.tEnd=Date.now(); clearInterval(timerId);
+                 const t=$('timer'); if(t) t.textContent=fmt(s.tEnd-s.t0); }
+  s.showResult=true; paint(id);
+}
+
+function next(id){
+  const D = ALL[id], s = st(id), isMock = !!D.mock, isRev = !!D.review;
+  if(s.showResult){
+    if(isMock){ s.showResult=false; s.idx=0; paint(id); return; }
+    const no = D.qs.filter((q,i)=>s.pick[i] && s.pick[i]!==q.a).length;
+    if(no){ s.filter='wrong'; s.showResult=false; s.idx=0; buildOrder(id); paint(id); }
+    else go('');
+    return;
+  }
+  if(s.idx === s.order.length-1){
+    if(isRev){ go(''); }
+    else if(isMock){ grade(id); }
+    else if(s.filter!=='all'){ s.filter='all'; s.idx=0; buildOrder(id); paint(id); }
+    else { s.showResult=true; paint(id); }
+  } else { s.idx++; s.memoOpen=false; paint(id); }
+}
+function prev(id){
+  const s = st(id);
+  if(s.showResult){ s.showResult=false; paint(id); return; }
+  if(s.idx>0){ s.idx--; s.memoOpen=false; paint(id); }
+}
+
+/* ───── 스와이프 · 키보드 ───── */
+const typing = e => /^(TEXTAREA|INPUT)$/.test((e.target&&e.target.tagName)||'');
+let sx=0, sy=0;
+main.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+main.addEventListener('touchend', e=>{
+  if(nav.hidden || typing(e)) return;
+  const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.8){
+    const b = dx<0 ? $('bNext') : $('bPrev'); if(b && !b.disabled) b.click();
+  }
+}, {passive:true});
+document.addEventListener('keydown', e=>{
+  if(nav.hidden) return;
+  if(typing(e)){ if(e.key==='Escape') e.target.blur(); return; }
+  if(e.key==='ArrowRight'){ const b=$('bNext'); if(b&&!b.disabled) b.click(); }
+  else if(e.key==='ArrowLeft'){ const b=$('bPrev'); if(b&&!b.disabled) b.click(); }
+  else if(e.key==='Escape'){ go(''); }
+  else if(e.key==='b'||e.key==='B'){ const b=$('bMark'); if(b&&!b.disabled) b.click(); }
+  else if(e.key==='m'||e.key==='M'){ const b=$('bMemo'); if(b&&!b.disabled) b.click(); }
+  else if(['1','2','3','4'].includes(e.key)){
+    const li = main.querySelector('ul.opts li[data-k="'+e.key+'"]'); if(li) li.click();
+  }
+});
+
+route();
+</script>
+</body>
+</html>
